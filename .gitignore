@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+frontend/node_modules/
+ecometer/target/
+
+# Production builds
+frontend/build/
+frontend/dist/
+
+# Environment files
+.env
+.env.local
+.env.production
+*.env
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Maven
+ecometer/.mvn/wrapper/maven-wrapper.jar
+ecometer/.mvn/wrapper/maven-wrapper.properties
+ecometer/.mvn/wrapper/MavenWrapperDownloader.java
+
+# Spring Boot
+ecometer/HELP.md
+ecometer/mvnw
+ecometer/mvnw.cmd
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Database
+*.db
+*.sqlite
+
+# Compiled Java classes
+*.class
