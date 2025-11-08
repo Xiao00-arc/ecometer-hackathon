@@ -1,126 +1,159 @@
-# EcoMeter Hackathon Prototype - Quick Setup Guide
+# EcoMeter - Smart Campus Energy Management System
 
-## 🚀 Complete Full-Stack Setup (36-hour Hackathon Ready!)
+A comprehensive energy monitoring dashboard for smart campus management, built with React and Spring Boot.
+
+## 🚀 Quick Start Guide for Friends
 
 ### Prerequisites
-- ✅ MySQL Server running on localhost:3306
-- ✅ Java 17+ installed
-- ✅ Node.js 16+ installed
-- ✅ Maven installed (or use included mvnw)
+- **Java 17 or higher** (for Spring Boot backend)
+- **Node.js 16+ and npm** (for React frontend)
+- **MySQL 8.0+** (for database)
+- **Git** (to clone the repository)
 
-### 1. Database Setup (5 minutes)
-```sql
--- Connect to MySQL and run:
-CREATE DATABASE IF NOT EXISTS ECO_DB;
-USE ECO_DB;
-
--- Run the complete schema from database_schema.sql
--- This includes tables + sample data for immediate testing
-```
-
-### 2. Backend Setup (Spring Boot)
+### 1. Clone the Repository
 ```bash
-# Navigate to backend folder
-cd ecometer
-
-# Update MySQL credentials in application.properties if needed
-# Current settings: username=root, password=root
-
-# Run Spring Boot application
-./mvnw spring-boot:run
-# Or on Windows: mvnw.cmd spring-boot:run
-
-# Server will start on http://localhost:8080
+git clone https://github.com/Xiao00-arc/ecometer-hackathon.git
+cd ecometer-hackathon
 ```
 
-### 3. Frontend Setup (React)
+### 2. Database Setup
+1. **Install MySQL** if not already installed
+2. **Create a database** named `ECO_DB`:
+   ```sql
+   CREATE DATABASE ECO_DB;
+   ```
+3. **Create a MySQL user** (optional but recommended):
+   ```sql
+   CREATE USER 'ecometer_user'@'localhost' IDENTIFIED BY 'password123';
+   GRANT ALL PRIVILEGES ON ECO_DB.* TO 'ecometer_user'@'localhost';
+   FLUSH PRIVILEGES;
+   ```
+
+### 3. Backend Setup (Spring Boot)
+1. **Navigate to backend directory**:
+   ```bash
+   cd ecometer
+   ```
+
+2. **Update database configuration** in `src/main/resources/application.properties`:
+   ```properties
+   spring.datasource.url=jdbc:mysql://localhost:3306/ECO_DB
+   spring.datasource.username=root
+   spring.datasource.password=your_mysql_password
+   ```
+
+3. **Start the backend server**:
+   ```bash
+   # On Windows
+   .\mvnw.cmd spring-boot:run
+   
+   # On Mac/Linux
+   ./mvnw spring-boot:run
+   ```
+   
+   The backend will start on `http://localhost:8081`
+
+### 4. Frontend Setup (React)
+1. **Open a new terminal** and navigate to frontend directory:
+   ```bash
+   cd frontend
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Start the frontend**:
+   ```bash
+   npm start
+   ```
+   
+   The frontend will start on `http://localhost:3000`
+
+### 5. Load Test Data
+Once both servers are running, you can load sample data in two ways:
+
+#### Option A: Using the API (Recommended)
+Open your browser and navigate to:
+```
+http://localhost:8081/api/initialize-test-data
+```
+Or use curl:
 ```bash
-# Navigate to frontend folder
-cd frontend
-
-# Install dependencies
-npm install
-
-# Start React development server
-npm start
-
-# Frontend will start on http://localhost:3000
+curl -X POST http://localhost:8081/api/initialize-test-data
 ```
 
-### 4. Test the Application
+#### Option B: Using Frontend (Coming Soon)
+A data initialization button will be available in the Settings page.
 
-#### Backend API Endpoints:
-- **GET** http://localhost:8080/api/dashboard-data
-- **GET** http://localhost:8080/api/suggestions
-- **POST** http://localhost:8080/api/data
-- **GET** http://localhost:8080/api/departments
+## 📊 Features
+- **Dashboard**: Real-time energy consumption overview
+- **Analytics**: Detailed energy consumption charts and trends
+- **Departments**: Department-wise energy monitoring
+- **Reports**: Comprehensive energy reports
+- **Settings**: System configuration options
+- **AI Suggestions**: Smart energy-saving recommendations
 
-#### Frontend Features:
-- 🌍 **Carbon Footprint Dashboard** - Real-time metrics
-- 📊 **Department Comparisons** - Interactive bar charts
-- 🤖 **AI Recommendations** - Smart energy suggestions
-- 📱 **Responsive Design** - Mobile-friendly interface
+## 🏗️ Architecture
+- **Frontend**: React 18 with React Router, Recharts, React Icons
+- **Backend**: Spring Boot 3.5.7 with JPA/Hibernate
+- **Database**: MySQL 8.0 with automatic schema generation
+- **API**: RESTful services with CORS enabled
 
-### 5. Demo Data Available
-The database comes pre-loaded with:
-- 5 University departments (CSE, VLSI, Admin, Library, Cafeteria)
-- 24 hours of simulated IoT energy data
-- 6 AI-generated sustainability suggestions
+## 📡 API Endpoints
+- `GET /api/departments` - Get all departments
+- `GET /api/energy` - Get energy consumption data
+- `GET /api/ai-suggestions` - Get AI recommendations
+- `POST /api/initialize-test-data` - Load sample data
+- `POST /api/reset-and-initialize` - Reset and reload data
+- `GET /api/data-status` - Check data status
 
-### 6. Simulate IoT Data (for Demo)
-```bash
-# POST new energy data to the API
-curl -X POST http://localhost:8080/api/data \
-  -H "Content-Type: application/json" \
-  -d '{
-    "departmentId": 1,
-    "kwhUsed": 125.5,
-    "sourceType": "ELECTRICITY"
-  }'
-```
+## 💡 Sample Data Included
+The system includes realistic test data:
+- **5 Departments**: CSE, VLSI Lab, Admin Office, Library, Cafeteria
+- **12 Energy Readings**: Hourly consumption data
+- **6 AI Suggestions**: Energy optimization recommendations
 
-## 🏆 Hackathon Demo Script (2-minute pitch)
+## 🛠️ Troubleshooting
 
-1. **Problem Statement** (30s)
-   - "Universities waste $2.3B annually on energy costs"
-   - "No real-time visibility into carbon footprint"
+### Backend Issues
+- **Port 8081 already in use**: Change the port in `application.properties`:
+  ```properties
+  server.port=8082
+  ```
+  Don't forget to update the frontend API URL accordingly.
 
-2. **Solution Demo** (60s)
-   - Open dashboard → Show live carbon metrics
-   - Navigate department comparison → Highlight efficiency gaps
-   - Review AI suggestions → Demonstrate ROI potential
+- **MySQL connection failed**: 
+  - Verify MySQL is running
+  - Check username/password in `application.properties`
+  - Ensure the database `ECO_DB` exists
 
-3. **Technical Achievement** (30s)
-   - "Full-stack prototype in 36 hours"
-   - "Ready for IoT sensor integration"
-   - "Scalable Spring Boot + React architecture"
+### Frontend Issues
+- **Port 3000 already in use**: The React dev server will prompt to use a different port
+- **API connection failed**: Ensure the backend is running on port 8081
 
-## 🛠 Tech Stack Implemented
-- **Backend**: Spring Boot 3.5.7, MySQL 8.0, JPA/Hibernate
-- **Frontend**: React 19.2.0, Chart.js, Axios
-- **Database**: MySQL with optimized queries and indexes
-- **Styling**: Custom CSS with glassmorphism design
+### No Data Showing
+- Use the test data initialization endpoint: `POST /api/initialize-test-data`
+- Check if data exists: `GET /api/data-status`
 
-## 📊 Key Metrics for Judges
-- **3 REST API endpoints** fully functional
-- **4 React components** with real-time data
-- **Database schema** with 3 tables + relationships
-- **Responsive design** works on mobile/desktop
-- **Auto-refresh** dashboard every 30 seconds
-- **Error handling** throughout the application
+## � Development
+To modify or extend the system:
+1. Backend code is in `ecometer/src/main/java/com/example/ecometer/`
+2. Frontend code is in `frontend/src/`
+3. Test data is in `ecometer/src/main/resources/test-data.json`
 
-## 🚨 Troubleshooting
-- **Database connection error**: Check MySQL is running and credentials match
-- **CORS errors**: Ensure frontend runs on localhost:3000
-- **API not responding**: Verify Spring Boot started successfully on port 8080
-- **Charts not loading**: Run `npm install` to ensure chart.js dependencies
+## � Support
+If you encounter any issues:
+1. Check the troubleshooting section above
+2. Ensure all prerequisites are installed
+3. Verify both frontend and backend are running
+4. Check browser console for frontend errors
+5. Check terminal output for backend errors
 
-## 🎯 Future Enhancements (Post-Hackathon)
-- Real IoT sensor integration (Arduino/Raspberry Pi)
-- Machine learning for predictive analytics
-- Multi-campus support with role-based access
-- Advanced reporting and export features
-- Mobile app for facility managers
+## 🎯 Demo URLs
+- **Frontend**: http://localhost:3000
+- **Backend API**: http://localhost:8081/api
+- **Test Data**: http://localhost:8081/api/initialize-test-data
 
----
-**Built with ❤️ for EcoMeter Hackathon 2025**
+Happy monitoring! 🌱⚡

@@ -1,0 +1,192 @@
+{
+  "departments": [
+    {
+      "id": 1,
+      "name": "Computer Science & Engineering",
+      "description": "Main CSE department with labs and classrooms",
+      "location": "Block A",
+      "totalDevices": 120,
+      "averageConsumption": 2500.50
+    },
+    {
+      "id": 2,
+      "name": "VLSI Design Lab",
+      "description": "Specialized VLSI design and testing laboratory",
+      "location": "Block B",
+      "totalDevices": 80,
+      "averageConsumption": 1800.75
+    },
+    {
+      "id": 3,
+      "name": "Administrative Office",
+      "description": "Main administrative building with offices",
+      "location": "Admin Block",
+      "totalDevices": 60,
+      "averageConsumption": 1200.25
+    },
+    {
+      "id": 4,
+      "name": "Central Library",
+      "description": "Main library with reading halls and computer section",
+      "location": "Library Block",
+      "totalDevices": 100,
+      "averageConsumption": 1500.00
+    },
+    {
+      "id": 5,
+      "name": "Student Cafeteria",
+      "description": "Main cafeteria with kitchen and dining area",
+      "location": "Ground Floor",
+      "totalDevices": 45,
+      "averageConsumption": 3200.80
+    }
+  ],
+  "energyReadings": [
+    {
+      "id": 1,
+      "department": "Computer Science & Engineering",
+      "timestamp": "2024-11-08T08:00:00",
+      "consumption": 2650.5,
+      "cost": 318.06,
+      "efficiency": 0.85
+    },
+    {
+      "id": 2,
+      "department": "VLSI Design Lab",
+      "timestamp": "2024-11-08T08:00:00",
+      "consumption": 1950.3,
+      "cost": 234.04,
+      "efficiency": 0.78
+    },
+    {
+      "id": 3,
+      "department": "Administrative Office",
+      "timestamp": "2024-11-08T08:00:00",
+      "consumption": 1180.2,
+      "cost": 141.62,
+      "efficiency": 0.92
+    },
+    {
+      "id": 4,
+      "department": "Central Library",
+      "timestamp": "2024-11-08T08:00:00",
+      "consumption": 1420.8,
+      "cost": 170.50,
+      "efficiency": 0.88
+    },
+    {
+      "id": 5,
+      "department": "Student Cafeteria",
+      "timestamp": "2024-11-08T08:00:00",
+      "consumption": 3450.6,
+      "cost": 414.07,
+      "efficiency": 0.72
+    },
+    {
+      "id": 6,
+      "department": "Computer Science & Engineering",
+      "timestamp": "2024-11-08T09:00:00",
+      "consumption": 2780.4,
+      "cost": 333.65,
+      "efficiency": 0.83
+    },
+    {
+      "id": 7,
+      "department": "VLSI Design Lab",
+      "timestamp": "2024-11-08T09:00:00",
+      "consumption": 1875.9,
+      "cost": 225.11,
+      "efficiency": 0.80
+    },
+    {
+      "id": 8,
+      "department": "Administrative Office",
+      "timestamp": "2024-11-08T09:00:00",
+      "consumption": 1250.7,
+      "cost": 150.08,
+      "efficiency": 0.90
+    },
+    {
+      "id": 9,
+      "department": "Central Library",
+      "timestamp": "2024-11-08T09:00:00",
+      "consumption": 1580.3,
+      "cost": 189.64,
+      "efficiency": 0.86
+    },
+    {
+      "id": 10,
+      "department": "Student Cafeteria",
+      "timestamp": "2024-11-08T09:00:00",
+      "consumption": 3280.1,
+      "cost": 393.61,
+      "efficiency": 0.75
+    },
+    {
+      "id": 11,
+      "department": "Computer Science & Engineering",
+      "timestamp": "2024-11-08T10:00:00",
+      "consumption": 2920.8,
+      "cost": 350.50,
+      "efficiency": 0.81
+    },
+    {
+      "id": 12,
+      "department": "VLSI Design Lab",
+      "timestamp": "2024-11-08T10:00:00",
+      "consumption": 2100.5,
+      "cost": 252.06,
+      "efficiency": 0.76
+    }
+  ],
+  "aiSuggestions": [
+    {
+      "id": 1,
+      "title": "Optimize AC Usage",
+      "description": "Reduce air conditioning by 2°C during peak hours to save 15% energy in CSE department",
+      "department": "Computer Science & Engineering",
+      "potentialSavings": "15%",
+      "priority": "HIGH"
+    },
+    {
+      "id": 2,
+      "title": "LED Lighting Upgrade",
+      "description": "Replace fluorescent lights with LED in VLSI lab for 30% energy reduction",
+      "department": "VLSI Design Lab",
+      "potentialSavings": "30%",
+      "priority": "MEDIUM"
+    },
+    {
+      "id": 3,
+      "title": "Smart Power Strips",
+      "description": "Install smart power strips in admin offices to eliminate standby power consumption",
+      "department": "Administrative Office",
+      "potentialSavings": "8%",
+      "priority": "LOW"
+    },
+    {
+      "id": 4,
+      "title": "Motion Sensors",
+      "description": "Install motion sensors in library reading areas for automatic lighting control",
+      "department": "Central Library",
+      "potentialSavings": "20%",
+      "priority": "MEDIUM"
+    },
+    {
+      "id": 5,
+      "title": "Kitchen Equipment Optimization",
+      "description": "Schedule cafeteria equipment usage during off-peak electricity hours",
+      "department": "Student Cafeteria",
+      "potentialSavings": "12%",
+      "priority": "HIGH"
+    },
+    {
+      "id": 6,
+      "title": "Solar Panel Installation",
+      "description": "Install solar panels on roof to generate renewable energy for campus",
+      "department": "All Departments",
+      "potentialSavings": "25%",
+      "priority": "HIGH"
+    }
+  ]
+}
