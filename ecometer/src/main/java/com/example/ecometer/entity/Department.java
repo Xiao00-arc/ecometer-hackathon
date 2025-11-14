@@ -1,5 +1,6 @@
 package com.example.ecometer.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -41,5 +42,6 @@ public class Department {
     
     // One-to-many relationship with EnergyData
     @OneToMany(mappedBy = "department", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore  // Prevent circular reference in JSON serialization
     private List<EnergyData> energyDataList;
 }

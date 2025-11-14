@@ -1,5 +1,6 @@
 package com.example.ecometer.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,6 +23,7 @@ public class EnergyData {
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "department_id", nullable = false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler", "energyDataList"})
     private Department department;
     
     @Column(name = "kwh_used", nullable = false, precision = 10, scale = 2)

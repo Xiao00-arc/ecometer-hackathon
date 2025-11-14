@@ -23,4 +23,6 @@ public interface EnergyDataRepository extends JpaRepository<EnergyData, Long> {
            "WHERE ed.timestamp >= :startTime " +
            "GROUP BY d.id, d.name")
     List<Object[]> getDepartmentSummary(LocalDateTime startTime);
+    
+    List<EnergyData> findTop10ByOrderByCreatedAtDesc();
 }

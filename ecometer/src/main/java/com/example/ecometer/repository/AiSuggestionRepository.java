@@ -12,7 +12,7 @@ public interface AiSuggestionRepository extends JpaRepository<AiSuggestion, Long
     
     List<AiSuggestion> findByIsActiveTrue();
     
-    @Query("SELECT a FROM AiSuggestion a WHERE a.isActive = true ORDER BY RAND() LIMIT 2")
+    @Query(value = "SELECT * FROM ai_suggestions WHERE is_active = true ORDER BY RAND() LIMIT 2", nativeQuery = true)
     List<AiSuggestion> findRandomActiveSuggestions();
     
     List<AiSuggestion> findByPriorityAndIsActiveTrue(AiSuggestion.Priority priority);

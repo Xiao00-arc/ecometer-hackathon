@@ -2,6 +2,7 @@ package com.example.ecometer.controller;
 
 import com.example.ecometer.dto.DashboardResponse;
 import com.example.ecometer.dto.EnergyDataRequest;
+import com.example.ecometer.dto.EnergyDataResponse;
 import com.example.ecometer.dto.SuggestionResponse;
 import com.example.ecometer.entity.AiSuggestion;
 import com.example.ecometer.entity.Department;
@@ -24,7 +25,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/api")
 @RequiredArgsConstructor
 @Slf4j
-@CrossOrigin(origins = "http://localhost:3000") // Allow React app to call our API
+@CrossOrigin(origins = {"http://localhost:3000", "http://localhost:3001"}) // Allow React app to call our API from both ports
 public class EcoMeterController {
     
     private final EnergyDataRepository energyDataRepository;
@@ -182,6 +183,30 @@ public class EcoMeterController {
             return ResponseEntity.ok(departments);
         } catch (Exception e) {
             log.error("Error fetching departments: {}", e.getMessage(), e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+    
+    /**
+     * GET /api/energy - Get recent energy data (for real-time monitoring)
+     */
+    @GetMapping("/energy")
+    public ResponseEntity<List<EnergyDataResponse>> getRecentEnergyData(@RequestParam(defaultValue = "10") int limit) {
+        try {
+            log.info("Fetching recent energy data (limit: {})", limit);
+            
+            // Get most recent energy data entries
+            List<EnergyData> recentData = energyDataRepository.findTop10ByOrderByCreatedAtDesc();
+            
+            // Convert to DTOs to avoid circular reference issues
+            List<EnergyDataResponse> response = recentData.stream()
+                    .map(EnergyDataResponse::new)
+                    .collect(Collectors.toList());
+            
+            return ResponseEntity.ok(response);
+            
+        } catch (Exception e) {
+            log.error("Error fetching recent energy data: {}", e.getMessage(), e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
