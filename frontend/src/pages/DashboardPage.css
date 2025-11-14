@@ -684,3 +684,262 @@
 .alerts-list::-webkit-scrollbar-thumb:hover {
   background: #a0aec0;
 }
+
+/* Virtual Sensor Simulation Styles */
+.simulation-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: linear-gradient(135deg, #ff4757, #ff3838);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px rgba(255, 71, 87, 0.3);
+  animation: slideInDown 0.5s ease-out;
+}
+
+.pulse-dot {
+  font-size: 12px;
+  animation: pulse 1.5s infinite;
+}
+
+.simulation-text {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.simulation-info {
+  font-size: 12px;
+  opacity: 0.9;
+  font-weight: 400;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes slideInDown {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Active Action Button Styles */
+.action-button.active {
+  background: linear-gradient(135deg, #ff4757, #ff3838);
+  color: white;
+  border: 2px solid #ff4757;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 71, 87, 0.4);
+}
+
+.action-button.active .action-icon {
+  color: white;
+  animation: zap 2s infinite;
+}
+
+.action-button.active .action-title {
+  color: white;
+  font-weight: 700;
+}
+
+.action-button.active .action-description {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+@keyframes zap {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Real-time Energy Data Styles */
+.realtime-data .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.live-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.realtime-energy-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.energy-reading {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 8px;
+  border-left: 4px solid #3498db;
+  transition: all 0.3s ease;
+  animation: slideInRight 0.5s ease-out;
+}
+
+.energy-reading:hover {
+  transform: translateX(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reading-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.department-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dept-name {
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 14px;
+}
+
+.source-type {
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.reading-time {
+  font-size: 12px;
+  color: #7f8c8d;
+  font-weight: 500;
+}
+
+.reading-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.reading-metrics .metric {
+  text-align: center;
+}
+
+.reading-metrics .metric-label {
+  display: block;
+  font-size: 11px;
+  color: #7f8c8d;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+  font-weight: 500;
+}
+
+.reading-metrics .metric-value {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.simulation-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px;
+  background: linear-gradient(135deg, #e8f5e8, #d4edda);
+  border-radius: 6px;
+  color: #27ae60;
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+.activity-icon {
+  animation: pulse 2s infinite;
+}
+
+.no-data {
+  text-align: center;
+  padding: 40px 20px;
+  color: #7f8c8d;
+}
+
+.no-data-icon {
+  font-size: 32px;
+  margin-bottom: 12px;
+  opacity: 0.5;
+}
+
+.no-data p {
+  margin: 0 0 8px 0;
+  font-weight: 500;
+}
+
+.no-data small {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  color: #7f8c8d;
+}
+
+.mini-spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #e2e8f0;
+  border-left: 2px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 12px;
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
